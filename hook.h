@@ -1,7 +1,7 @@
 ﻿#ifndef HOOK_H
 #define HOOK_H
 typedef unsigned long ulong;
-class apihook
+class APIHook
 {
 private:
 	int param_num;
@@ -14,8 +14,8 @@ private:
 	ulong getptr();
 
 public:
-	apihook();
-	~apihook();
+	APIHook();
+	~APIHook();
 	void init(char *func, char *dll, void *new_function, int param_num, int align = 5);
 	bool install();
 	bool uninstall();
@@ -35,14 +35,14 @@ public:
 
 };
 
-class apiproxy
+class APIProxy
 {
 private:
 	void  * api_bak;
 	ulong * param;
 	int param_num;
 public:
-	apiproxy(void *api_bak, ulong * param, int param_num);
+	APIProxy(void *api_bak, ulong * param, int param_num);
 	ulong call();
 };
 

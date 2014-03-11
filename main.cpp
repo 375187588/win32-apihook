@@ -18,7 +18,7 @@ int WINAPI myMessageBoxA(
     __in_opt LPCSTR *lpText,
     __in_opt LPCSTR *lpCaption,
     __in UINT *uType,
-	apiproxy *proxy)
+	APIProxy *proxy)
 {
 	*lpText = "hello";
 	*uType = MB_YESNOCANCEL;
@@ -29,7 +29,7 @@ int WINAPI myMessageBoxA(
 int main()
 {
 	//__asm INT 3;
-	apihook * hook = new apihook;
+	APIHook * hook = new APIHook;
 	hook->init("MessageBoxA","User32.dll",myMessageBoxA,4,5);
 	hook->install();
 	MessageBoxA((HWND)0,"text","title",0);
