@@ -16,7 +16,12 @@ private:
 public:
 	APIHook();
 	~APIHook();
-	void init(char *func, char *dll, void *new_function, int param_num, int align = 5);
+	void init(
+		const char *func,
+		const char *dll,
+		void *new_function,
+		int param_num,
+		int align = 5);
 	bool install();
 	bool uninstall();
 

@@ -153,7 +153,7 @@ APIHook::APIHook()
 	VirtualProtect(api_bak,	  1024, PAGE_EXECUTE_READWRITE, &oldprotect);
 }
 
-void APIHook::init(char *func, char *dll, void *new_function, int param_num, int align)
+void APIHook::init(const char *func, const char *dll, void *new_function, int param_num, int align)
 {
 	assert ( param_num>=0 && param_num<=10 );
 	assert ( align>=5 );

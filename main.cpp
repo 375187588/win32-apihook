@@ -20,15 +20,16 @@ int WINAPI myMessageBoxA(
     __in UINT *uType,
 	APIProxy *proxy)
 {
+	int ret;
 	*lpText = "hello";
 	*uType = MB_YESNOCANCEL;
-	printf("%d",proxy->call());
-	return printf("%d,%s,%s,%d\r\n",*hWnd,*lpText,*lpCaption,*uType);
+	ret = proxy->call();
+	printf("arg(%d,%s,%s,%d) ret: %d\r\n", *hWnd, *lpText, *lpCaption, *uType, ret);
+	return ret;
 }
 
 int main()
 {
-	//__asm INT 3;
 	APIHook * hook = new APIHook;
 	hook->init("MessageBoxA","User32.dll",myMessageBoxA,4,5);
 	hook->install();
